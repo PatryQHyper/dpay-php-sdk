@@ -16,7 +16,11 @@ class HandlePaymentNotification extends SecureAbstract
 
     public function __construct(private readonly string $hash)
     {
-        $this->payload = @json_decode(file_get_contents('php://input'));
+        try {
+            $this->payload = @json_decode(file_get_contents('php://input'));
+        } catch (\TypeError) {
+            $this->payload = (object)[];
+        }
     }
 
     /**
