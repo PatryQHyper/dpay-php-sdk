@@ -1,0 +1,21 @@
+{
+  "name": "patryqhyper/dpay-php-sdk",
+  "description": "PHP SDK for dpay.pl payments provider",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Patryk Vizauer",
+      "email": "patryk@vizauer.pl"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "guzzlehttp/guzzle": "^7.4.2",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "PatryQHyper\\Dpay\\": "src/"
+    }
+  }
+}
