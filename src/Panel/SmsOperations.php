@@ -21,6 +21,6 @@ class SmsOperations extends PanelAbstract
         if ($request->getStatusCode() != 200)
             throw new DpaySmsException(sprintf('Error %s; %s', $json->errorcode, $json->message));
 
-        echo $request;
+        return $request;
     }
 }
