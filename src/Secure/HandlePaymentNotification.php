@@ -33,7 +33,7 @@ class HandlePaymentNotification extends SecureAbstract
         }
 
         foreach ($this->parameters as $parameter) {
-            if (!isset($this->payload->$parameter) || empty($this->payload->parameter)) {
+            if (!isset($this->payload->$parameter) || empty($this->payload->$parameter)) {
                 throw new DpayNotificationException(sprintf('Parameter %s not found in payload', $parameter));
             }
         }
@@ -57,6 +57,41 @@ class HandlePaymentNotification extends SecureAbstract
         ];
 
         return hash('sha256', implode('', $payload));
+    }
+
+    public function getId(): string
+    {
+        return $this->payload->id;
+    }
+
+    public function getAmount(): float
+    {
+        return $this->payload->amount;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->payload->email;
+    }
+
+    public function getType(): string
+    {
+        return $this->payload->type;
+    }
+
+    public function getAttempt(): int
+    {
+        return $this->payload->attempt;
+    }
+
+    public function getVersion(): int
+    {
+        return $this->payload->version;
+    }
+
+    public function getCustom(): string
+    {
+        return $this->payload->custom;
     }
 
     private array $parameters = [
