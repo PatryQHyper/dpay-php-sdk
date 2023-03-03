@@ -8,6 +8,7 @@
 
 namespace PatryQHyper\Dpay\Secure;
 
+use JetBrains\PhpStorm\NoReturn;
 use PatryQHyper\Dpay\Exceptions\DpayNotificationException;
 
 class HandlePaymentNotification extends SecureAbstract
@@ -92,6 +93,13 @@ class HandlePaymentNotification extends SecureAbstract
     public function getCustom(): string
     {
         return $this->payload->custom;
+    }
+
+    #[NoReturn] public function responseOk()
+    {
+        ob_clean();
+        http_response_code(200);
+        exit('OK');
     }
 
     private array $parameters = [
