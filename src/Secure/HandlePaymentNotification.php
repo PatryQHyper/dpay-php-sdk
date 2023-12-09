@@ -39,7 +39,7 @@ class HandlePaymentNotification extends SecureAbstract
             }
         }
 
-        if ($this->payload->signature != $this->generateSignature()) {
+        if ($this->payload->signature !== $this->generateSignature()) {
             throw new DpayNotificationException('invalid signature');
         }
     }
